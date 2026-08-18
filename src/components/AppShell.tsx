@@ -5,7 +5,7 @@ import { useState, type ReactNode } from "react";
 import { NAV_ITEMS } from "@/lib/tool-config";
 import { cn } from "@/lib/utils";
 
-function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
+function NavLinks({ onNavigate }: { onNavigate?: (() => void) | undefined }) {
   return (
     <nav className="flex flex-col gap-1">
       {NAV_ITEMS.map((item) => (
@@ -27,7 +27,7 @@ function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
   );
 }
 
-function SidebarBody({ onNavigate }: { onNavigate?: () => void }) {
+function SidebarBody({ onNavigate }: { onNavigate?: (() => void) | undefined }) {
   return (
     <div className="flex h-full flex-col gap-6 p-4">
       <Link to="/" onClick={onNavigate} className="flex items-center gap-3 px-2 py-1">
@@ -67,7 +67,7 @@ export function AppShell({
 }: {
   children: ReactNode;
   title: string;
-  subtitle?: string;
+  subtitle?: string | undefined;
 }) {
   const [open, setOpen] = useState(false);
 
