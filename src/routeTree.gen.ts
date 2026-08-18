@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AssistantRouteImport } from './routes/assistant'
+import { Route as EmailGeneratorRouteImport } from './routes/email-generator'
+import { Route as MeetingNotesRouteImport } from './routes/meeting-notes'
+import { Route as ResearchRouteImport } from './routes/research'
+import { Route as TaskPlannerRouteImport } from './routes/task-planner'
+import { Route as ApiChatRouteImport } from './routes/api/chat'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AssistantRoute = AssistantRouteImport.update({
+  id: '/assistant',
+  path: '/assistant',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmailGeneratorRoute = EmailGeneratorRouteImport.update({
+  id: '/email-generator',
+  path: '/email-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MeetingNotesRoute = MeetingNotesRouteImport.update({
+  id: '/meeting-notes',
+  path: '/meeting-notes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResearchRoute = ResearchRouteImport.update({
+  id: '/research',
+  path: '/research',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TaskPlannerRoute = TaskPlannerRouteImport.update({
+  id: '/task-planner',
+  path: '/task-planner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiChatRoute = ApiChatRouteImport.update({
+  id: '/api/chat',
+  path: '/api/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/assistant': typeof AssistantRoute
+  '/email-generator': typeof EmailGeneratorRoute
+  '/meeting-notes': typeof MeetingNotesRoute
+  '/research': typeof ResearchRoute
+  '/task-planner': typeof TaskPlannerRoute
+  '/api/chat': typeof ApiChatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/assistant': typeof AssistantRoute
+  '/email-generator': typeof EmailGeneratorRoute
+  '/meeting-notes': typeof MeetingNotesRoute
+  '/research': typeof ResearchRoute
+  '/task-planner': typeof TaskPlannerRoute
+  '/api/chat': typeof ApiChatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/assistant': typeof AssistantRoute
+  '/email-generator': typeof EmailGeneratorRoute
+  '/meeting-notes': typeof MeetingNotesRoute
+  '/research': typeof ResearchRoute
+  '/task-planner': typeof TaskPlannerRoute
+  '/api/chat': typeof ApiChatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/assistant'
+    | '/email-generator'
+    | '/meeting-notes'
+    | '/research'
+    | '/task-planner'
+    | '/api/chat'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/assistant'
+    | '/email-generator'
+    | '/meeting-notes'
+    | '/research'
+    | '/task-planner'
+    | '/api/chat'
+  id:
+    | '__root__'
+    | '/'
+    | '/assistant'
+    | '/email-generator'
+    | '/meeting-notes'
+    | '/research'
+    | '/task-planner'
+    | '/api/chat'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AssistantRoute: typeof AssistantRoute
+  EmailGeneratorRoute: typeof EmailGeneratorRoute
+  MeetingNotesRoute: typeof MeetingNotesRoute
+  ResearchRoute: typeof ResearchRoute
+  TaskPlannerRoute: typeof TaskPlannerRoute
+  ApiChatRoute: typeof ApiChatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/assistant': {
+      id: '/assistant'
+      path: '/assistant'
+      fullPath: '/assistant'
+      preLoaderRoute: typeof AssistantRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/email-generator': {
+      id: '/email-generator'
+      path: '/email-generator'
+      fullPath: '/email-generator'
+      preLoaderRoute: typeof EmailGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/meeting-notes': {
+      id: '/meeting-notes'
+      path: '/meeting-notes'
+      fullPath: '/meeting-notes'
+      preLoaderRoute: typeof MeetingNotesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/research': {
+      id: '/research'
+      path: '/research'
+      fullPath: '/research'
+      preLoaderRoute: typeof ResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/task-planner': {
+      id: '/task-planner'
+      path: '/task-planner'
+      fullPath: '/task-planner'
+      preLoaderRoute: typeof TaskPlannerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/chat': {
+      id: '/api/chat'
+      path: '/api/chat'
+      fullPath: '/api/chat'
+      preLoaderRoute: typeof ApiChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AssistantRoute: AssistantRoute,
+  EmailGeneratorRoute: EmailGeneratorRoute,
+  MeetingNotesRoute: MeetingNotesRoute,
+  ResearchRoute: ResearchRoute,
+  TaskPlannerRoute: TaskPlannerRoute,
+  ApiChatRoute: ApiChatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
